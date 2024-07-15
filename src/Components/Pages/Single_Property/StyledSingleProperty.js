@@ -7,6 +7,7 @@ const MainContaniner = styled.div`
   background-color: #eef1f9;
   flex-direction: column;
   gap: 30px;
+  padding: 50px 0px;
 `;
 const Main = styled.div`
   max-width: 920px;
@@ -15,17 +16,39 @@ const Main = styled.div`
   align-items: start;
   flex-direction: column;
   gap: 10px;
-  padding-top: 5%;
+  padding-top: 50px;
+  @media (max-width: 950px) {
+    width: 700px;
+  }
+  @media (max-width: 690px) {
+    width: 400px;
+  }
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 `;
 const Image = styled.img`
   border: none;
+  width: 920px;
+  height: 500px;
   border-radius: 8px;
+  @media (max-width: 950px) {
+    width: 700px;
+    height: 400px;
+  }
+  @media (max-width: 690px) {
+    width: 400px;
+  }
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 `;
 const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  flex-wrap: wrap;
 `;
 const Image2 = styled.img`
   width: 300px;
@@ -42,6 +65,7 @@ const HeadingContainer = styled.div`
 const ExtraContainer = styled.div`
   width: 100%;
   padding-top: 20px;
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,6 +81,7 @@ const IconContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 15px;
+  flex-wrap: wrap;
 `;
 const Icon = styled.button`
   border: none;
@@ -191,11 +216,23 @@ const MapContainer = styled.div`
   width: 550px;
   height: 240px;
   overflow: hidden;
+  @media (max-width: 690px) {
+    width: 400px;
+  }
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 `;
 const MapIframe = styled.iframe`
   width: 550px;
   height: 240px;
   border: none;
+  @media (max-width: 690px) {
+    width: 400px;
+  }
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 `;
 const Search = styled.p`
   width: 920px;
@@ -210,6 +247,7 @@ const ButtonContainer = styled.div`
   justify-content: start;
   gap: 20px;
   padding: 30px 0px;
+  flex-wrap: wrap;
 `;
 const Button = styled.button`
   display: flex;

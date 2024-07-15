@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
   align-items: start;
   flex-wrap: wrap;
   gap: 12%;
-  padding-top: 50px;
+  padding: 50px 0px;
 `;
 
 export const FormContainer = styled.div`
@@ -170,4 +170,49 @@ export const LoginHeading = styled.h1`
   color: #7b2cbf;
   text-align: center;
   margin: 0%;
+`;
+export const MsgContainer = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
+  flex-direction: column;
+`;
+
+export const InputHolder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 15px;
+`;
+export const ToggleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  cursor: pointer;
+`;
+
+export const SLabel = styled.span`
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  color: ${({ isSelected }) => (isSelected ? "black" : "white")};
+  z-index: 1;
+  font-size: 18px;
+`;
+
+export const ToggleSlider = styled.div`
+  position: absolute;
+  top: 2px;
+  left: ${({ isSelected }) => (isSelected ? "2px" : "calc(50% + 2px)")};
+  width: 46px;
+  height: 36px;
+  background-color: ${({ isSelected }) => (isSelected ? "#f44336" : "#4caf50")};
+  border-radius: 18px;
+  transition: left 0.3s;
+  color: white;
 `;

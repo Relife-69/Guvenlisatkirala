@@ -14,6 +14,11 @@ import {
   CheckBoxContainer,
   CheckBox,
   Label,
+  SLabel,
+  MsgContainer,
+  InputHolder,
+  ToggleContainer,
+  ToggleSlider,
 } from "./StyledLawyerSign";
 import Button from "../../Button/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,7 +34,10 @@ const LSign = () => {
   const [barAssociationName, setBarAssociationName] = useState("");
   const [barAssociationRegistryNumber, setBarAssociationRegistryNumber] =
     useState("");
+  const [isSmsSelected, setIsSmsSelected] = useState(true);
+  const [isEmailSelected, setIsEmailSelected] = useState(true);
   const [password, setPassword] = useState("");
+  const [neighborhood, setNeighborHood] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [acceptAgreement, setAcceptAgreement] = useState(false);
@@ -60,6 +68,7 @@ const LSign = () => {
       bar_association_registry_number: barAssociationRegistryNumber,
       phone_number: phoneNumber,
       accept_agreement: acceptAgreement,
+      neighbor_hood: neighborhood,
       role,
     };
 
@@ -148,6 +157,13 @@ const LSign = () => {
                 onChange={(e) => setCity(e.target.value)}
               />
               <StyledInput
+                type="text"
+                placeholder="Komşu"
+                name="neighborhood"
+                value={neighborhood}
+                onChange={(e) => setNeighborHood(e.target.value)}
+              />
+              <StyledInput
                 type="password"
                 placeholder="Şifrenizi belirleyin"
                 name="password"
@@ -186,6 +202,44 @@ const LSign = () => {
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </InputContainer>
+            <MsgContainer>
+              <Label>
+                Tüm duyuru ve kampanyalardan ticari elektronik ileti yoluyla
+                haberdar olmak istiyorum.
+              </Label>
+              <InputHolder>
+                <ToggleContainer>
+                  <SLabel
+                    isSelected={!isEmailSelected}
+                    onClick={() => setIsEmailSelected(false)}
+                  >
+                    Hayır
+                  </SLabel>
+                  <SLabel
+                    isSelected={isEmailSelected}
+                    onClick={() => setIsEmailSelected(true)}
+                  >
+                    Evet
+                  </SLabel>
+                  <ToggleSlider isSelected={isEmailSelected} />
+                </ToggleContainer>
+                <ToggleContainer>
+                  <SLabel
+                    isSelected={!isSmsSelected}
+                    onClick={() => setIsSmsSelected(false)}
+                  >
+                    Hayır
+                  </SLabel>
+                  <SLabel
+                    isSelected={isSmsSelected}
+                    onClick={() => setIsSmsSelected(true)}
+                  >
+                    Evet
+                  </SLabel>
+                  <ToggleSlider isSelected={isSmsSelected} />
+                </ToggleContainer>
+              </InputHolder>
+            </MsgContainer>
             <CheckBoxContainer>
               <CheckBox
                 type="checkbox"

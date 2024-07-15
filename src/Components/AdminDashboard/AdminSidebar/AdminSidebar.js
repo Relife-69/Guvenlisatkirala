@@ -70,35 +70,35 @@ const AdminSidebar = ({ showSideBar }) => {
             Standart Kullanıcı Listesi
           </List>
         </Link>
-        <Link to="">
+        <Link to="/frontenduser">
           <List>
             <FaArrowRight />
             <MdPerson />
             Ön Uç Yöneticisi
           </List>
         </Link>
-        <Link to="">
+        <Link to="/listinguser">
           <List>
             <FaArrowRight />
             <MdPerson />
             İlan Yöneticisi
           </List>
         </Link>
-        <Link to="">
+        <Link to="/partner">
           <List>
             <FaArrowRight />
             <MdPerson />
             Küçük partner
           </List>
         </Link>
-        <Link to="">
+        <Link to="/developeruser">
           <List>
             <FaArrowRight />
             <MdPerson />
             Geliştirici
           </List>
         </Link>
-        <Link to="">
+        <Link to="/workeruser">
           <List>
             <FaArrowRight />
             <MdPerson />

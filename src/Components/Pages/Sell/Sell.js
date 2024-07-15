@@ -384,6 +384,9 @@ const Sell = () => {
     if (use === "lawyer") {
       alert("ilan yayınlamak için standart üye olarak oturum açın");
       navigate("/");
+    } else if (use === "") {
+      alert("Henüz Giriş Yapmadınız. Lütfen Önce Giriş Yapın");
+      navigate("/signin");
     }
   }, [navigate]);
 

@@ -12,8 +12,13 @@ import {
   Heading2,
   CheckBox,
   Label,
+  SLabel,
   CheckBoxContainer2,
   LoginHeading,
+  MsgContainer,
+  InputHolder,
+  ToggleContainer,
+  ToggleSlider,
 } from "./Styledsignup";
 import Button from "../../Button/Button";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,7 +34,12 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [acceptAgreement, setAcceptAgreement] = useState(false);
+  const [isEmailSelected, setIsEmailSelected] = useState(true);
+  const [isSmsSelected, setIsSmsSelected] = useState(true);
   const [role, setRole] = useState("standard");
+  const [neighborhood, setNeighborHood] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const Sign_in = () => {
@@ -49,6 +59,9 @@ const Signup = () => {
       first_name: firstName,
       last_name: lastName,
       phone_number: phoneNumber,
+      address,
+      neighbor_hood: neighborhood,
+      district_city: city,
       password: password,
       confirm_password: confirmPassword,
       accept_agreement: acceptAgreement,
@@ -81,89 +94,6 @@ const Signup = () => {
       // alert(result.data.username + "already exist");
     }
   };
-  //     if (result.data) {
-  //       try {
-  //         const verificationResult = await axios.post(
-  //           "https://api.guvenlisatkirala.com/api/send-verification-email/",
-  //           { username: email },
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //               Accept: "application/json",
-  //             },
-  //           }
-  //         );
-  //         console.log("API Response:", verificationResult.data);
-  //         if (
-  //           verificationResult.data &&
-  //           verificationResult.data.verification_url
-  //         ) {
-  //           // Store verification URL in localStorage
-  //           localStorage.setItem(
-  //             "verification_url",
-  //             verificationResult.data.verification_url
-  //           );
-  //           localStorage.setItem("user-info", JSON.stringify(result.data));
-  //           localStorage.setItem(
-  //             "phone",
-  //             JSON.stringify(result.data.phone_number)
-  //           );
-
-  //           console.log("User information stored in localStorage");
-
-  //           // Extracting and storing the token in localStorage
-  //           const verificationUrl = verificationResult.data.verification_url;
-  //           const token = new URL(verificationUrl).searchParams.get("token");
-  //           const username = new URL(verificationUrl).searchParams.get(
-  //             "username"
-  //           );
-  //           localStorage.setItem("auth-token", token);
-  //           localStorage.setItem("user-name", username);
-  //           navigate("/email");
-  //         } else {
-  //           console.error(
-  //             "Unexpected response format",
-  //             verificationResult.data
-  //           );
-  //         }
-  //       } catch (verificationError) {
-  //         if (verificationError.response) {
-  //           console.error(
-  //             "Error verifying email:",
-  //             verificationError.response.data
-  //           );
-  //           console.error(
-  //             "Error response status:",
-  //             verificationError.response.status
-  //           );
-  //           console.error(
-  //             "Error response headers:",
-  //             verificationError.response.headers
-  //           );
-  //         } else if (verificationError.request) {
-  //           console.error("Error request data:", verificationError.request);
-  //         } else {
-  //           console.error("Error message:", verificationError.message);
-  //         }
-  //         console.error("Error config:", verificationError.config);
-  //       }
-  //     } else {
-  //       console.error("Unexpected response format", result.data);
-  //     }
-  //   }
-  //   catch (error) {
-  //     if (error.response) {
-  //       console.error("Error response data:", error.response.data);
-  //       console.error("Error response status:", error.response.status);
-  //       console.error("Error response headers:", error.response.headers);
-  //     } else if (error.request) {
-  //       console.error("Error request data:", error.request);
-  //     } else {
-  //       console.error("Error message:", error.message);
-  //     }
-  //     console.error("Error config:", error.config);
-  //   }
-  // };
 
   return (
     <>
@@ -213,6 +143,27 @@ const Signup = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <InputContain
+                type="text"
+                placeholder="Adres"
+                name="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+              <InputContain
+                type="text"
+                placeholder="İLÇE/ŞEHİR"
+                name="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <InputContain
+                type="text"
+                placeholder="Komşu"
+                name="neighborhood"
+                value={neighborhood}
+                onChange={(e) => setNeighborHood(e.target.value)}
+              />
+              <InputContain
                 required
                 type="password"
                 placeholder="Şifrenizi belirleyin"
@@ -237,6 +188,44 @@ const Signup = () => {
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </InputContainer>
+            <MsgContainer>
+              <Label>
+                Tüm duyuru ve kampanyalardan ticari elektronik ileti yoluyla
+                haberdar olmak istiyorum.
+              </Label>
+              <InputHolder>
+                <ToggleContainer>
+                  <SLabel
+                    isSelected={!isEmailSelected}
+                    onClick={() => setIsEmailSelected(false)}
+                  >
+                    Hayır
+                  </SLabel>
+                  <SLabel
+                    isSelected={isEmailSelected}
+                    onClick={() => setIsEmailSelected(true)}
+                  >
+                    Evet
+                  </SLabel>
+                  <ToggleSlider isSelected={isEmailSelected} />
+                </ToggleContainer>
+                <ToggleContainer>
+                  <SLabel
+                    isSelected={!isSmsSelected}
+                    onClick={() => setIsSmsSelected(false)}
+                  >
+                    Hayır
+                  </SLabel>
+                  <SLabel
+                    isSelected={isSmsSelected}
+                    onClick={() => setIsSmsSelected(true)}
+                  >
+                    Evet
+                  </SLabel>
+                  <ToggleSlider isSelected={isSmsSelected} />
+                </ToggleContainer>
+              </InputHolder>
+            </MsgContainer>
             <CheckBoxContainer2>
               <CheckBox
                 required

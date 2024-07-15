@@ -63,6 +63,16 @@ import Contract2 from "./Components/Contract/Contract2";
 import Contract3 from "./Components/Contract/Contract3";
 import ApprovedLawyerList from "./Components/AdminDashboard/AdminLawyerApprove/ApprovedLawyerList";
 import UserList from "./Components/AdminDashboard/Users/UserList";
+import Frontend from "./Components/AdminDashboard/Users/Frontend";
+import Worker from "./Components/AdminDashboard/Users/Worker";
+import Developer from "./Components/AdminDashboard/Users/Developer";
+import ListingManager from "./Components/AdminDashboard/Users/ListingManager";
+import JuniorPartner from "./Components/AdminDashboard/Users/JuniorPartner";
+import AddForntend from "./Components/AdminDashboard/Users/AddForntend";
+import AddListingManager from "./Components/AdminDashboard/Users/AddListingManager";
+import AddJunior from "./Components/AdminDashboard/Users/AddJunior";
+import AddDeveloper from "./Components/AdminDashboard/Users/AddDeveloper";
+import AddWorker from "./Components/AdminDashboard/Users/AddWorker";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -100,7 +110,6 @@ function App() {
         <Route path="/sellagreement" element={<SellAgreement />} />
         <Route path="/rentagreement" element={<RentAgreement />} />
         <Route path="/singleproject" element={<SingleProject />} />
-        <Route path="/singleproperty/:id" element={<SingleProperty />} />
         <Route path="/rentsingleproperty" element={<RentSingleProperty />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/lsign" element={<LSign />} />
@@ -114,10 +123,13 @@ function App() {
         <Route path="/C1" element={<Contract1 />} />
         <Route path="/C2" element={<Contract2 />} />
         <Route path="/C3" element={<Contract3 />} />
+        <Route path="/sell" element={<Sell />} />
+
         {/* <Route path="/sell" element={<Navigate to="/signin" replace />} /> */}
 
         {isLoggedIn && role === "standard" && (
           <>
+            <Route path="/singleproperty/:id" element={<SingleProperty />} />
             <Route path="/sell" element={<Sell />} />
             <Route path="/dashhome" element={<DashHome />} />
             <Route path="/activeads" element={<Active />} />
@@ -137,6 +149,7 @@ function App() {
 
         {isLoggedIn && role === "lawyer" && (
           <>
+            <Route path="/singleproperty/:id" element={<SingleProperty />} />
             <Route path="/lawyer" element={<HairLawyer />} />
             <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
             <Route path="/lawyeractiveads" element={<ActiveAds />} />
@@ -171,6 +184,16 @@ function App() {
             <Route path="/adminpass" element={<AdminChangePassword />} />
             <Route path="/lawyerlist" element={<ApprovedLawyerList />} />
             <Route path="/userlist" element={<UserList />} />
+            <Route path="/frontenduser" element={<Frontend />} />
+            <Route path="/workeruser" element={<Worker />} />
+            <Route path="/developeruser" element={<Developer />} />
+            <Route path="/listinguser" element={<ListingManager />} />
+            <Route path="/partner" element={<JuniorPartner />} />
+            <Route path="/addfrontend" element={<AddForntend />} />
+            <Route path="/addlisting" element={<AddListingManager />} />
+            <Route path="/addpartner" element={<AddJunior />} />
+            <Route path="/adddevelop" element={<AddDeveloper />} />
+            <Route path="/addworker" element={<AddWorker />} />
           </>
         )}
 
