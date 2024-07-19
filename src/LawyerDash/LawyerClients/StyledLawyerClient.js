@@ -218,3 +218,13 @@ export const Item = styled.h1`
   font-weight: 500;
   margin: 0%;
 `;
+
+export const Whatsapp = styled.img`
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  text-align: end;
+  align-items: end;
+`;

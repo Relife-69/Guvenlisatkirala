@@ -18,9 +18,13 @@ import {
   NameContainer2,
   Button,
   Humburger,
+  AddProfilePic,
+  ImageContainer,
 } from "./StyledLawyerProfile";
+import { FiEdit } from "react-icons/fi";
 
 const LawyerProfile = () => {
+  const [profilePicUrl, setProfilePicUrl] = useState("");
   const [showSideBar, setShowSideBar] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -81,23 +85,89 @@ const LawyerProfile = () => {
     }
   };
 
+  const handleProfilePicChange = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("profile_picture", file);
+
+    const token = localStorage.getItem("access-token");
+
+    if (!token) {
+      setError("You are not logged in. Please log in first.");
+      return;
+    }
+
+    try {
+      const result = await axios.post(
+        "https://api.guvenlisatkirala.com/api/upload-profile-picture/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Profile Pic Upload Response:", result.data);
+      if (result.data.profile_picture) {
+        setProfilePicUrl(result.data.profile_picture);
+      } else {
+        console.warn("Profile picture URL is null or undefined");
+      }
+      alert("Profil resmi başarıyla yüklendi");
+    } catch (error) {
+      console.error(
+        "Error uploading profile pic:",
+        error.response || error.message
+      );
+      setError(error.response ? error.response.data.message : error.message);
+      alert("Profil resmi yüklenirken bir hata oluştu, lütfen tekrar deneyin");
+    }
+  };
+
   useEffect(() => {
-    // Fetch and set initial data here if needed
-    // Example:
-    // axios.get('https://api.guvenlisatkirala.com/api/lawyer-profile', {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("access-token")}`,
-    //   },
-    // }).then(response => {
-    //   setFormData({
-    //     firstName: response.data.first_name,
-    //     lastName: response.data.last_name,
-    //     email: response.data.email,
-    //     phoneNumber: response.data.phone_number
-    //   });
-    // }).catch(error => {
-    //   console.error(error);
-    // });
+    const fetchProfileData = async () => {
+      try {
+        const token = localStorage.getItem("access-token");
+
+        if (!token) {
+          setError("You are not logged in. Please log in first.");
+          return;
+        }
+
+        const response = await axios.get(
+          "https://api.guvenlisatkirala.com/api/upload-profile-picture/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = response.data;
+        if (data.profile_picture) {
+          setProfilePicUrl(data.profile_picture);
+        } else {
+          console.warn("Profile picture URL is null or undefined in fetch");
+        }
+
+        // Fetch and set other profile data here if needed
+        setFormData({
+          firstName: data.first_name,
+          lastName: data.last_name,
+          email: data.email,
+          phoneNumber: data.phone_number,
+        });
+      } catch (error) {
+        console.error(
+          "Error fetching profile data:",
+          error.response || error.message
+        );
+        setError(error.response ? error.response.data.message : error.message);
+      }
+    };
+
+    fetchProfileData();
   }, []);
 
   return (
@@ -111,7 +181,23 @@ const LawyerProfile = () => {
         <CardContain>
           <Heading>Profili Düzenle</Heading>
           <ProfileContainer>
-            <ProfilePic src={Prof} />
+            <ImageContainer>
+              <ProfilePic src={profilePicUrl || Prof} alt="Profile Picture" />
+              <AddProfilePic
+                onClick={() =>
+                  document.getElementById("profilePicInput").click()
+                }
+              >
+                <FiEdit />
+              </AddProfilePic>
+              <input
+                id="profilePicInput"
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleProfilePicChange}
+              />
+            </ImageContainer>
             <NameContainer>
               <Holder>
                 <Label>İlk adı:</Label>

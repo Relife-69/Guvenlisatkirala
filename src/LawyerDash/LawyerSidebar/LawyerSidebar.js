@@ -98,11 +98,11 @@ const LawyerSidebar = ({ showSideBar }) => {
         </ListContainer>
       </Link>
       <Link>
-        <ListContainer>
+        <ListContainer onClick={() => toggleMenu("Üyeliğim")}>
           <CgProfile />
           Üyeliğim
           <DragDown>
-            <IoIosArrowDown onClick={() => toggleMenu("Üyeliğim")} />
+            <IoIosArrowDown />
           </DragDown>
         </ListContainer>
         <List2Container showMenu={openMenu === "Üyeliğim"}>
@@ -115,6 +115,18 @@ const LawyerSidebar = ({ showSideBar }) => {
             <List>
               <FaArrowRight />
               Şifre değiştir
+            </List>
+          </Link>
+          <Link to="/">
+            <List>
+              <FaArrowRight />
+              Üyelik Paketlerim
+            </List>
+          </Link>
+          <Link to="/">
+            <List>
+              <FaArrowRight />
+              Ödemelerim
             </List>
           </Link>
         </List2Container>

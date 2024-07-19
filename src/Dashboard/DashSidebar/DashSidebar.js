@@ -31,16 +31,21 @@ const DashSidebar = ({ showSideBar }) => {
           Ev
         </ListContainer>
       </Link>
-      <Link to="/allad">
-        <ListContainer>
+      <Link>
+        <ListContainer onClick={() => toggleMenu("İlanlarım")}>
           <MdOutlineAdsClick />
           İlanlarım
           <DragDown>
-            <IoIosArrowDown onClick={() => toggleMenu("İlanlarım")} />
+            <IoIosArrowDown />
           </DragDown>
         </ListContainer>
       </Link>
       <List2Container showMenu={openMenu === "İlanlarım"}>
+        <Link to="/allad">
+          <List>
+            <FaArrowRight /> Reklamlar
+          </List>
+        </Link>
         <Link to="/activeads">
           <List>
             <FaArrowRight /> Aktif Reklamlar
@@ -132,11 +137,11 @@ const DashSidebar = ({ showSideBar }) => {
         </ListContainer>
       </Link>
       <Link>
-        <ListContainer>
+        <ListContainer onClick={() => toggleMenu("Üyeliğim")}>
           <GiMonkFace />
           Üyeliğim
           <DragDown>
-            <IoIosArrowDown onClick={() => toggleMenu("Üyeliğim")} />
+            <IoIosArrowDown />
           </DragDown>
         </ListContainer>
       </Link>
@@ -157,6 +162,18 @@ const DashSidebar = ({ showSideBar }) => {
           <List>
             <FaArrowRight />
             Hesabımı sil
+          </List>
+        </Link>
+        <Link to="/">
+          <List>
+            <FaArrowRight />
+            Üyelik Paketlerim
+          </List>
+        </Link>
+        <Link to="/">
+          <List>
+            <FaArrowRight />
+            Ödemelerim
           </List>
         </Link>
       </List2Container>

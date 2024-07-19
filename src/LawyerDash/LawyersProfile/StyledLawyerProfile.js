@@ -31,11 +31,27 @@ export const ProfileContainer = styled.div`
   gap: 35px;
   flex-direction: column;
 `;
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: end;
+  justify-content: center;
+`;
 export const ProfilePic = styled.img`
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 2px solid #7b2cbf;
+`;
+export const AddProfilePic = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  right: 35px;
 `;
 export const NameContainer = styled.div`
   width: 450px;

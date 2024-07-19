@@ -8,16 +8,23 @@ const MainContainer = styled.div`
   flex-wrap: wrap;
   margin-top: 100px;
 `;
+const FormContaienr = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+`;
 const RightContainer = styled.div`
   width: 770px;
-  height: 770px;
+  margin-top: -40px;
   @media (max-width: 800px) {
     width: 100%;
   }
 `;
 const Pic = styled.img`
   width: 770px;
-  height: 770px;
+  margin-top: -40px;
+
   @media (max-width: 800px) {
     width: 100%;
   }
@@ -80,12 +87,6 @@ const Input = styled.input`
   height: 65px;
   font-size: 18px;
   font-weight: 400;
-  @media (max-width: 800px) {
-    width: 100%;
-  }
-  @media (max-width: 600px) {
-    width: 100%;
-  }
   @media (max-width: 450px) {
     width: 375px;
   }
@@ -115,4 +116,5 @@ export {
   Input,
   Return,
   ReturnLink,
+  FormContaienr,
 };

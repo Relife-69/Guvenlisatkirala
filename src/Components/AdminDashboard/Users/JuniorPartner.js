@@ -19,7 +19,9 @@ import AdminNavbar from "../AdminNavbar/AdminNavbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrAddCircle } from "react-icons/gr";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ImBin } from "react-icons/im";
+import { FiEdit } from "react-icons/fi";
 
 const JuniorPartner = () => {
   const [isOpen, setIsOpen] = useState({});
@@ -31,7 +33,8 @@ const JuniorPartner = () => {
   const toggleSideBar = () => {
     setShowSideBar(!showSideBar);
   };
-  const Adduser = () => {
+
+  const AddUser = () => {
     navigate("/addpartner");
   };
 
@@ -54,13 +57,30 @@ const JuniorPartner = () => {
       );
       setUsers(response.data);
     } catch (error) {
-      console.error("Error Users:", error);
-      setError("Error Users. Please try again later.");
+      console.error("Error fetching users:", error);
+      setError("Error fetching users. Please try again later.");
+    }
+  };
+
+  const deletePartnerUser = async (id) => {
+    try {
+      await axios.delete(
+        `https://api.guvenlisatkirala.com/api/admin/employees/partner/${id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
+      );
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      setError("Error deleting user. Please try again later.");
     }
   };
 
   useEffect(() => {
-    fetchFrontendUser();
+    deletePartnerUser();
   }, []);
 
   return (
@@ -75,7 +95,7 @@ const JuniorPartner = () => {
           <CardContainer>
             <UserAdd>
               <Heading>Küçük partner</Heading>
-              <AddButton onClick={Adduser}>
+              <AddButton onClick={AddUser}>
                 <GrAddCircle />
                 Add New
               </AddButton>
@@ -93,7 +113,6 @@ const JuniorPartner = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
             {users.map((user) => (
               <LawyerContainer key={user.id}>
-                {/* <LawyerContainer> */}
                 <UpperContainer onClick={() => toggleUserDetails(user.id)}>
                   <UserContainer>
                     <HeadingText>{user.employee_name}</HeadingText>
@@ -103,10 +122,19 @@ const JuniorPartner = () => {
                     <HeadingActiveText isActive={user.status === "active"}>
                       {user.status}
                     </HeadingActiveText>
-                    <HeadingText>Aksiyon</HeadingText>
+                    <HeadingText>
+                      <Link to={`/editpartner/${user.id}`}>
+                        <FiEdit />
+                      </Link>
+                      <span onClick={() => deletePartnerUser(user.id)}>
+                        <ImBin />
+                      </span>
+                    </HeadingText>
                   </UserContainer>
                 </UpperContainer>
-                {/* {isOpen[user.id] && <LowerContainer></LowerContainer>} */}
+                {isOpen[user.id] && (
+                  <div>Additional details can be placed here</div>
+                )}
               </LawyerContainer>
             ))}
           </CardContainer>

@@ -40,3 +40,12 @@ export const Heading = styled.div`
   font-size: 28px;
   font-weight: 600;
 `;
+export const Whatsapp = styled.img`
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  text-align: end;
+  align-items: end;
+`;

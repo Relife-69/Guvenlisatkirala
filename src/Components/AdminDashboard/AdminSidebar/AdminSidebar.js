@@ -45,7 +45,7 @@ const AdminSidebar = ({ showSideBar }) => {
       <Link to="/adminpass">
         <ListContainer>
           <MdPerson />
-          Ortaklar
+          Şifre değiştir
         </ListContainer>
       </Link>
       <ListContainer>

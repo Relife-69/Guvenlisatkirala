@@ -70,11 +70,6 @@ const Footer = () => {
               <Link to="/contuctus">BİZE ULAŞIN</Link>
             </FLink>
           </List>
-          <List>
-            <FLink>
-              <Link to="/activeads">Dash</Link>
-            </FLink>
-          </List>
         </Menu>
       </MenuContainer>
       <MenuContainer>
@@ -98,6 +93,27 @@ const Footer = () => {
             <FLink>
               <Link to="/C3" target="blank">
                 KULLANIM KOŞULLARI
+              </Link>
+            </FLink>
+          </List>
+          <List>
+            <FLink>
+              <Link to="/C4" target="blank">
+                İŞLEM REHBERİ
+              </Link>
+            </FLink>
+          </List>
+          <List>
+            <FLink>
+              <Link to="/C5" target="blank">
+                KİŞİSEL VERİLERİN KORUNMASI HAKKINDA
+              </Link>
+            </FLink>
+          </List>
+          <List>
+            <FLink>
+              <Link to="/C6" target="blank">
+                ÜYELİK SÖZLEŞMESİ VE GİZLİLİK POLİTİKASI
               </Link>
             </FLink>
           </List>

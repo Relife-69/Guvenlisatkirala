@@ -38,16 +38,14 @@ const Story = () => {
         </StoryContainer>
         <StoryContainer>
           <RightContainer>
-            <Heading>LOGO Ailemiz</Heading>
+            <Heading>GUVENLİSATKİRALA Ailemiz</Heading>
             <Description>
               Kendini adamış, coşkulu bir ekip olmadan başarı mümkün olmazdı
               profesyonellerden oluşan bir ekip olarak her alandan en iyi
               insanları bir araya getirdik. Ekip üyelerimizin her biri, bu
-              şartların yerine getirilmesinde hayati bir rol oynamaktadır. LOGO
-              rüyası, kolektif misyona inanan gerçek bir emlak devrimi.
-              Pazarlama ekibimizden danışmanlarımıza, satış ekibimize kadar,
-              tasarımcılar, kafemizdeki insanlar ve diğer herkes en iyi
-              oyunlarını getiriyor nedenine.
+              şartların yerine getirilmesinde hayati bir rol oynamaktadır.
+              GUVENLİSATKİRALA rüyası, kolektif misyona inanan gerçek bir emlak
+              devrimi.
             </Description>
           </RightContainer>
           <PicContainer>
@@ -69,24 +67,6 @@ const Story = () => {
               herkes artık tüm işlemlerini hukuki güvence ile yapacaktır.
             </Description>
           </RightContainer>
-        </StoryContainer>
-        <StoryContainer>
-          <RightContainer>
-            <Heading>LOGO Ailemiz</Heading>
-            <Description>
-              Kendini adamış, coşkulu bir ekip olmadan başarı mümkün olmazdı
-              profesyonellerden oluşan bir ekip olarak her alandan en iyi
-              insanları bir araya getirdik. Ekip üyelerimizin her biri, bu
-              şartların yerine getirilmesinde hayati bir rol oynamaktadır. LOGO
-              rüyası, kolektif misyona inanan gerçek bir emlak devrimi.
-              Pazarlama ekibimizden danışmanlarımıza, satış ekibimize kadar,
-              tasarımcılar, kafemizdeki insanlar ve diğer herkes en iyi
-              oyunlarını getiriyor nedenine.
-            </Description>
-          </RightContainer>
-          <PicContainer>
-            <Image src={Pic}></Image>
-          </PicContainer>
         </StoryContainer>
       </MainContainer>
       <Footer />

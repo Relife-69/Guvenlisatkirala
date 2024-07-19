@@ -40,11 +40,19 @@ import { IoMdMail } from "react-icons/io";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { ImCross } from "react-icons/im";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ApprovedLawyer = () => {
   const [isOpen, setIsOpen] = useState({});
   const [showSideBar, setShowSideBar] = useState(false);
   const [lawyers, setLawyers] = useState([]);
+  const navigate = useNavigate();
+  const use = localStorage.getItem("user-role");
+  useEffect(() => {
+    if (use !== "admin") {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const toggleSideBar = () => {
     setShowSideBar(!showSideBar);

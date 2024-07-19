@@ -10,6 +10,7 @@ import DashNav from "../DashNavbar/DashNav";
 import DashSidebar from "../DashSidebar/DashSidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const All = () => {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -18,6 +19,13 @@ const All = () => {
   };
   const [cardsData, setCardsData] = useState([]);
   const productContainerRef = useRef(null);
+  const navigate = useNavigate();
+  const use = localStorage.getItem("user-role");
+  useEffect(() => {
+    if (use !== "standard") {
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     async function fetchAdvertisements() {

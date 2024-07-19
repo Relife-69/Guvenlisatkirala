@@ -15,8 +15,8 @@ const AddJunior = () => {
   const [employeeName, setEmployeeName] = useState("");
   const [email, setEmail] = useState("");
   const [joinedAt, setJoinedAt] = useState("");
-  const [unitname, setUnitname] = useState("103");
-  const [userID, setUserID] = useState("");
+  const [unitname, setUnitname] = useState("");
+  const [userID, setUserID] = useState("103");
   const [status, setStatus] = useState("");
   const [neighborhood, setNeighborHood] = useState("");
   const [address, setAddress] = useState("");

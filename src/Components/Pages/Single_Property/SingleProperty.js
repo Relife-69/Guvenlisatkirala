@@ -64,6 +64,10 @@ import P8 from "../../Images/Area1.png";
 const SingleProperty = () => {
   const { id } = useParams();
   const [propertyData, setPropertyData] = useState(null);
+  const [showPhoneNumber, setShowPhoneNumber] = useState(false);
+  const togglePhoneNumber = () => {
+    setShowPhoneNumber(!showPhoneNumber);
+  };
 
   useEffect(() => {
     async function fetchProperty() {
@@ -93,7 +97,23 @@ const SingleProperty = () => {
   if (!propertyData) {
     return <div>Loading...</div>; // Add loading state if necessary
   }
-
+  const handleShare = async (title) => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "Paylaş: " + title,
+          text: "Güvenli satılık kiralık ilanı",
+          url: window.location.href,
+        });
+      } else {
+        // Fallback if navigator.share is not supported
+        console.log("Web share not supported, using fallback");
+        // You can implement a custom share dialog or any fallback logic here
+      }
+    } catch (error) {
+      console.error("Error sharing:", error);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -116,15 +136,23 @@ const SingleProperty = () => {
               <Price>{propertyData.dynamic_attributes.price}</Price>
             </PriceContainer>
             <IconContainer>
-              {/* Render action icons */}
-              <Icon>
+              <Icon
+                onClick={() =>
+                  handleShare(propertyData.dynamic_attributes.title)
+                }
+              >
                 <IconImage src={P4}></IconImage>
-                <IconText>İlan sahibini ara</IconText>
+                <IconText>Paylaş</IconText>
               </Icon>
-              <Icon>
+              <Icon onClick={togglePhoneNumber}>
                 <IconImage src={P5}></IconImage>
-                <IconText>İlanı paylaş</IconText>
+                <IconText>
+                  {showPhoneNumber
+                    ? propertyData.dynamic_attributes.phone_number
+                    : "İlan sahibini ara"}
+                </IconText>
               </Icon>
+
               <Icon>
                 <LikeButton />
                 <IconText>Favorilere ekle</IconText>

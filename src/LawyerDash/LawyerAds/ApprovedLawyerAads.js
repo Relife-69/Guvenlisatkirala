@@ -13,11 +13,19 @@ import LawyerNavbar from "../LawyerNavbar/LawyerNavbar";
 import LawyerSidebar from "../LawyerSidebar/LawyerSidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ApprovedLawyerAads = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [cardsData, setCardsData] = useState([]);
   const productContainerRef = useRef(null);
+  const navigate = useNavigate();
+  const use = localStorage.getItem("user-role");
+  useEffect(() => {
+    if (use !== "lawyer") {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const toggleSideBar = () => {
     setShowSideBar(!showSideBar);

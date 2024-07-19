@@ -47,11 +47,13 @@ const Signin = () => {
       const token = loginResponse.data.access;
       const role = loginResponse.data.role;
       const username = loginResponse.data.username;
+      const phone_number = loginResponse.data.phone_number;
 
       if (token && role) {
         localStorage.setItem("access-token", token);
         localStorage.setItem("user-role", role);
         localStorage.setItem("username", username);
+        localStorage.setItem("phone_number", phone_number);
         setMsg("Login success.");
         alert("Login Successful");
         navigate("/");

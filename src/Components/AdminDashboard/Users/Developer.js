@@ -19,7 +19,9 @@ import AdminNavbar from "../AdminNavbar/AdminNavbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrAddCircle } from "react-icons/gr";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ImBin } from "react-icons/im";
+import { FiEdit } from "react-icons/fi";
 const Developer = () => {
   const [isOpen, setIsOpen] = useState({});
   const [showSideBar, setShowSideBar] = useState(false);
@@ -60,6 +62,26 @@ const Developer = () => {
 
   useEffect(() => {
     fetchFrontendUser();
+  }, []);
+  const deleteDeveloperUser = async (id) => {
+    try {
+      await axios.delete(
+        `https://api.guvenlisatkirala.com/api/admin/employees/developer/${id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
+      );
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      setError("Error deleting user. Please try again later.");
+    }
+  };
+
+  useEffect(() => {
+    deleteDeveloperUser();
   }, []);
 
   return (
@@ -102,7 +124,14 @@ const Developer = () => {
                     <HeadingActiveText isActive={user.status === "active"}>
                       {user.status}
                     </HeadingActiveText>
-                    <HeadingText>Aksiyon</HeadingText>
+                    <HeadingText>
+                      <Link to={`/editpartner/${user.id}`}>
+                        <FiEdit />
+                      </Link>
+                      <span onClick={() => deleteDeveloperUser(user.id)}>
+                        <ImBin />
+                      </span>
+                    </HeadingText>
                   </UserContainer>
                 </UpperContainer>
                 {/* {isOpen[user.id] && <LowerContainer></LowerContainer>} */}

@@ -54,7 +54,9 @@ const AdminNavbar = ({ toggleSideBar }) => {
   return (
     <Header>
       <LogoContainer>
-        <Logo src={Web}></Logo>
+        <Link to="/">
+          <Logo src={Web}></Logo>
+        </Link>
         <Humburger onClick={toggleSideBar}>
           <GiHamburgerMenu />
         </Humburger>

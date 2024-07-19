@@ -11,6 +11,7 @@ import {
   Input,
   Return,
   ReturnLink,
+  FormContaienr,
 } from "./StyledForget";
 import Button from "../../Button/Button";
 import Pice from "../../Images/Forget.png";
@@ -65,7 +66,7 @@ const Forget = () => {
           <Heading>Şifreni mi unuttun?</Heading>
           <Text>Lütfen E-posta Adresinizi aşağıya girin:</Text>
         </TextContainer>
-        <form onSubmit={handleSubmit}>
+        <FormContaienr onSubmit={handleSubmit}>
           <Input
             type="email"
             placeholder="E-posta Adresi"
@@ -79,7 +80,7 @@ const Forget = () => {
             cb
             text={loading ? "Gönderiliyor..." : "Şifreyi yenile"}
           />
-        </form>
+        </FormContaienr>
         <InputContainer>
           {error && <p style={{ color: "red" }}>{error}</p>}
           {success && <p style={{ color: "green" }}>{success}</p>}

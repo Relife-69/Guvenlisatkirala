@@ -92,6 +92,7 @@ const Icon = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  cursor: pointer;
 `;
 const Head = styled.h1`
   font-size: 28px;

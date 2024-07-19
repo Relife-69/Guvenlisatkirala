@@ -148,7 +148,7 @@ const Navbar = () => {
                     <Link to="/lawyeractiveads">Lawyer Dashboard</Link>
                   )}
                   {userRole === "standard" && (
-                    <Link to="/dashhome">User Dashboard</Link>
+                    <Link to="/allad">User Dashboard</Link>
                   )}
                 </DropdownItem>
                 <DropdownItem onClick={Log_Out}>Log-Out</DropdownItem>

@@ -73,6 +73,10 @@ import AddListingManager from "./Components/AdminDashboard/Users/AddListingManag
 import AddJunior from "./Components/AdminDashboard/Users/AddJunior";
 import AddDeveloper from "./Components/AdminDashboard/Users/AddDeveloper";
 import AddWorker from "./Components/AdminDashboard/Users/AddWorker";
+import EditFrontend from "./Components/AdminDashboard/Users/EditFrontEnd";
+import Contract4 from "./Components/Contract/Contract4";
+import Contract5 from "./Components/Contract/Contract5";
+import Contract6 from "./Components/Contract/Contract6";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -110,7 +114,6 @@ function App() {
         <Route path="/sellagreement" element={<SellAgreement />} />
         <Route path="/rentagreement" element={<RentAgreement />} />
         <Route path="/singleproject" element={<SingleProject />} />
-        <Route path="/rentsingleproperty" element={<RentSingleProperty />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/lsign" element={<LSign />} />
         <Route path="/signin" element={<Signin />} />
@@ -123,48 +126,69 @@ function App() {
         <Route path="/C1" element={<Contract1 />} />
         <Route path="/C2" element={<Contract2 />} />
         <Route path="/C3" element={<Contract3 />} />
+        <Route path="/C4" element={<Contract4 />} />
+        <Route path="/C5" element={<Contract5 />} />
+        <Route path="/C6" element={<Contract6 />} />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/approvedlwayer" element={<ApprovedLawyer />} />
+        <Route path="/lawyeractiveads" element={<ActiveAds />} />
+        <Route path="/allad" element={<All />} />
+        <Route path="/lawyer" element={<HairLawyer />} />
+        <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/adminads" element={<AdminAds />} />
+        <Route path="/adminhome" element={<AdminHome />} />
+        <Route path="/adminpass" element={<AdminChangePassword />} />
+        <Route path="/lawyerlist" element={<ApprovedLawyerList />} />
+        <Route path="/userlist" element={<UserList />} />
+        <Route path="/frontenduser" element={<Frontend />} />
+        <Route path="/workeruser" element={<Worker />} />
+        <Route path="/developeruser" element={<Developer />} />
+        <Route path="/listinguser" element={<ListingManager />} />
+        <Route path="/partner" element={<JuniorPartner />} />
+        <Route path="/addfrontend" element={<AddForntend />} />
+        <Route path="/addlisting" element={<AddListingManager />} />
+        <Route path="/addpartner" element={<AddJunior />} />
+        <Route path="/adddevelop" element={<AddDeveloper />} />
+        <Route path="/addworker" element={<AddWorker />} />
+        <Route path="/editfrontend" element={<EditFrontend />} />
+        <Route path="/singleproperty/:id" element={<SingleProperty />} />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/rentsingleproperty" element={<RentSingleProperty />} />
+        <Route path="/dashhome" element={<DashHome />} />
+        <Route path="/activeads" element={<Active />} />
+        <Route path="/inactiveads" element={<InActive />} />
+        <Route path="/expireads" element={<Expire />} />
+        <Route path="/draftads" element={<Draft />} />
+        <Route path="/deleteads" element={<Delete />} />
+        <Route path="/deleteaccount" element={<DeleteAccount />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/changepassword" element={<ChangePassword />} />
+        <Route path="/favourite" element={<Favorurite />} />
+        <Route path="/lawyer" element={<HairLawyer />} />
+        <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
+        <Route path="/singleproperty/:id" element={<SingleProperty />} />
+        <Route path="/lawyer" element={<HairLawyer />} />
+        <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
+        <Route path="/lawyerinactiveads" element={<InactiveAds />} />
+        <Route path="/lawyerexpireads" element={<ExpireAds />} />
+        <Route path="/lawyerdraftads" element={<DraftAds />} />
+        <Route path="/lawyerdeletedads" element={<DeletedAds />} />
+        <Route path="/approved" element={<ApprovedLawyerAads />} />
+        <Route path="/allads" element={<AllAdvertisement />} />
+        <Route path="/papers" element={<LawyersAgreementPager />} />
+        <Route path="/chats" element={<LawyerChat />} />
+        <Route path="/LProfile" element={<LawyerProfile />} />
+        <Route path="/clients" element={<LawyersClients />} />
+        <Route path="/lawyerpassword" element={<LawyerPassword />} />
         <Route path="/sell" element={<Sell />} />
 
         {/* <Route path="/sell" element={<Navigate to="/signin" replace />} /> */}
 
-        {isLoggedIn && role === "standard" && (
-          <>
-            <Route path="/singleproperty/:id" element={<SingleProperty />} />
-            <Route path="/sell" element={<Sell />} />
-            <Route path="/dashhome" element={<DashHome />} />
-            <Route path="/activeads" element={<Active />} />
-            <Route path="/inactiveads" element={<InActive />} />
-            <Route path="/expireads" element={<Expire />} />
-            <Route path="/draftads" element={<Draft />} />
-            <Route path="/deleteads" element={<Delete />} />
-            <Route path="/deleteaccount" element={<DeleteAccount />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/changepassword" element={<ChangePassword />} />
-            <Route path="/favourite" element={<Favorurite />} />
-            <Route path="/lawyer" element={<HairLawyer />} />
-            <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
-            <Route path="/allad" element={<All />} />
-          </>
-        )}
+        {isLoggedIn && role === "standard" && <></>}
 
         {isLoggedIn && role === "lawyer" && (
           <>
-            <Route path="/singleproperty/:id" element={<SingleProperty />} />
-            <Route path="/lawyer" element={<HairLawyer />} />
-            <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
-            <Route path="/lawyeractiveads" element={<ActiveAds />} />
-            <Route path="/lawyerinactiveads" element={<InactiveAds />} />
-            <Route path="/lawyerexpireads" element={<ExpireAds />} />
-            <Route path="/lawyerdraftads" element={<DraftAds />} />
-            <Route path="/lawyerdeletedads" element={<DeletedAds />} />
-            <Route path="/approved" element={<ApprovedLawyerAads />} />
-            <Route path="/allads" element={<AllAdvertisement />} />
-            <Route path="/papers" element={<LawyersAgreementPager />} />
-            <Route path="/chats" element={<LawyerChat />} />
-            <Route path="/LProfile" element={<LawyerProfile />} />
-            <Route path="/clients" element={<LawyersClients />} />
-            <Route path="/lawyerpassword" element={<LawyerPassword />} />
-            <Route path="/sell" element={<Sell />} />
             {/* <Route
               path="/sell"
               element={<Navigate to="/" replace />}
@@ -173,29 +197,7 @@ function App() {
           </>
         )}
 
-        {isLoggedIn && role === "admin" && (
-          <>
-            <Route path="/lawyer" element={<HairLawyer />} />
-            <Route path="/authorizedlawyer" element={<AuthorizedLawyer />} />
-            <Route path="/sell" element={<Sell />} />
-            <Route path="/approvedlwayer" element={<ApprovedLawyer />} />
-            <Route path="/adminads" element={<AdminAds />} />
-            <Route path="/adminhome" element={<AdminHome />} />
-            <Route path="/adminpass" element={<AdminChangePassword />} />
-            <Route path="/lawyerlist" element={<ApprovedLawyerList />} />
-            <Route path="/userlist" element={<UserList />} />
-            <Route path="/frontenduser" element={<Frontend />} />
-            <Route path="/workeruser" element={<Worker />} />
-            <Route path="/developeruser" element={<Developer />} />
-            <Route path="/listinguser" element={<ListingManager />} />
-            <Route path="/partner" element={<JuniorPartner />} />
-            <Route path="/addfrontend" element={<AddForntend />} />
-            <Route path="/addlisting" element={<AddListingManager />} />
-            <Route path="/addpartner" element={<AddJunior />} />
-            <Route path="/adddevelop" element={<AddDeveloper />} />
-            <Route path="/addworker" element={<AddWorker />} />
-          </>
-        )}
+        {isLoggedIn && role === "admin" && <></>}
 
         {!isLoggedIn && <Route path="/signin" element={<Signin />} />}
 

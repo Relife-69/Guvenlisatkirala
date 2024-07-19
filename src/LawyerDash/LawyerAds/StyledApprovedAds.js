@@ -67,3 +67,12 @@ export const Humburger = styled.div`
     left: 20px;
   }
 `;
+export const Whatsapp = styled.img`
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  right: 10px;
+  bottom: 40px;
+  text-align: end;
+  align-items: end;
+`;

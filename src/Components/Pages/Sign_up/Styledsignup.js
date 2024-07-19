@@ -216,3 +216,60 @@ export const ToggleSlider = styled.div`
   transition: left 0.3s;
   color: white;
 `;
+export const SearchBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 420px;
+  height: 70px;
+  border: 2px solid black;
+  padding-left: 10px;
+  border-radius: 10px;
+  background-color: white;
+  @media (max-width: 400px) {
+    width: 250px;
+  }
+`;
+export const Select = styled.select`
+  padding: 10px;
+  width: 360px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 14.63px;
+  margin: 0%;
+  appearance: none;
+  gap: 10px;
+  border-radius: 6px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  @media (max-width: 400px) {
+    width: 250px;
+  }
+`;
+export const Option = styled.option`
+  display: flex;
+  /* height: 24px; */
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+`;
+export const SearchIcon = styled.div`
+  width: 60px;
+  height: 70px;
+  background-color: #7b2cbf;
+  border: none;
+  border-radius: 0px 7px 7px 0px;
+  color: white;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

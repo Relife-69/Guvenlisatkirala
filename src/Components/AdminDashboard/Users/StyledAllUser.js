@@ -149,6 +149,12 @@ export const HeadingText = styled.h1`
   font-size: 14px;
   font-weight: 500;
   margin: 0%;
+  gap: 10px;
+  cursor: pointer;
+  display: flex;
+  span {
+    color: red;
+  }
 `;
 export const HeadingActiveText = styled.h1`
   color: ${({ isActive }) => (isActive ? "green" : "red")};

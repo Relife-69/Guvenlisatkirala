@@ -4,12 +4,15 @@ import {
   CardContain,
   CardContainer,
   Humburger,
+  Whatsapp,
 } from "./StyledActiveAds";
 import Buycard from "../../Components/Card/BuyCard/Buycard";
 import LawyerNavbar from "../LawyerNavbar/LawyerNavbar";
 import LawyerSidebar from "../LawyerSidebar/LawyerSidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
+import Whats from "../../Components/Images/whats.webp";
+import { Link } from "react-router-dom";
 
 const AllAdvertisement = () => {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -89,6 +92,9 @@ const AllAdvertisement = () => {
             </CardContainer>
           ))}
         </CardContain>
+        <Link to="https://wa.me/+90 546 420 06 21" target="blank">
+          <Whatsapp src={Whats} />
+        </Link>
       </MainContainer>
     </>
   );
