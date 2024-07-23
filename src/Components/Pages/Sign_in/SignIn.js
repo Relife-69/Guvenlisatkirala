@@ -48,12 +48,19 @@ const Signin = () => {
       const role = loginResponse.data.role;
       const username = loginResponse.data.username;
       const phone_number = loginResponse.data.phone_number;
+      const is_approved_by_government =
+        loginResponse.data.is_approved_by_government;
+
 
       if (token && role) {
         localStorage.setItem("access-token", token);
         localStorage.setItem("user-role", role);
         localStorage.setItem("username", username);
         localStorage.setItem("phone_number", phone_number);
+        localStorage.setItem(
+          "is_approved_by_government",
+          is_approved_by_government
+        );
         setMsg("Login success.");
         alert("Login Successful");
         navigate("/");
