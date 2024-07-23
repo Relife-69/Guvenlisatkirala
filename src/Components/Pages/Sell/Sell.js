@@ -1221,23 +1221,37 @@ const Sell = () => {
   const [flatePerFloor, setFlatePerFloor] = useState({});
   const [buildingOffical, setBuildingOffical] = useState({});
   const [hydro, setHydro] = useState({});
-  const [phoneNumberFromStorage, setPhoneNumberFromStorage] = useState("");
+ const [phoneNumberFromStorage, setPhoneNumberFromStorage] = useState("");
   const [generator, setGenerator] = useState({});
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
-  const use = localStorage.getItem("user-role");
+
+  const isApprovedByGovernment =
+    localStorage.getItem("is_approved_by_government") === "true";
+  const userRole = localStorage.getItem("user-role");
+
   useEffect(() => {
-    const phone_number = localStorage.getItem("phone_number");
-    if (phone_number) {
-      setPhoneNumberFromStorage(phone_number);
+    const phoneNumber = localStorage.getItem("phone_number");
+
+    if (phoneNumber) {
+      setPhoneNumberFromStorage(phoneNumber);
     }
   }, []);
+
   useEffect(() => {
-    if (use === "lawyer") {
+    if (userRole === "lawyer") {
       alert("ilan yayınlamak için standart üye olarak oturum açın");
       navigate("/");
+    } else if (userRole === null) {
+      alert("Giriş Yapmıyorsunuz. Lütfen önce giriş yapın");
+      navigate("/signup");
+    } else if (!isApprovedByGovernment) {
+      alert(
+        "Hükümet Tarafından Onaylanmadınız, Lütfen Önce Kendinizi Doğrulayın/Onaylayın."
+      );
+      navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, userRole, isApprovedByGovernment]);
   const getButtonStyle = (value) => {
     const isActive = purpose === value;
     return {
@@ -1254,11 +1268,6 @@ const Sell = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (use === null) {
-      alert("ilan yayınlamak için standart üye olarak oturum açın");
-      navigate("/signin");
-      return; // Prevent further execution if user is null
-    }
     const user = {
       purpose,
       property_type: propertyType,
